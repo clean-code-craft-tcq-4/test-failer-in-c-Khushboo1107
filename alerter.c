@@ -1,23 +1,28 @@
 #include <stdio.h>
 #include <assert.h>
+#include "alert.h"
 
 int alertFailureCount = 0;
-int Alert_threshold = 200;
 
 int networkAlertStub(float celcius) {
     printf("ALERT: Temperature is %.1f celcius.\n", celcius);
     // Return 200 for ok
     // Return 500 for not-ok
     // stub always succeeds and returns 200
-   if(Alert_threshold < celcius)
-   {return 200;}
-    else
-    { return 500;}
+    if(celcius > Alert_Threshold) {
+        return 500;
+    } else {
+        return 200;
+    }
 }
 
-void alertInCelcius(float farenheit) {
-    float celcius = (farenheit - 32) * 5 / 9;
-    int returnCode = networkAlertStub(celcius);
+float farenheitToCelciusConverter(float farenheit) {
+    return ((farenheit-32)*5/9);
+}
+    
+void alertInCelcius(float farenheit, int (*Fn_Ptr_NetworkAlert)(float)) {
+    float celcius = farenheitToCelciusConverter(farenheit);
+    int returnCode = Fn_Ptr_NetworkAlert(celcius);
     if (returnCode != 200) {
         // non-ok response is not an error! Issues happen in life!
         // let us keep a count of failures to report
@@ -27,10 +32,17 @@ void alertInCelcius(float farenheit) {
     }
 }
 
+void testTempAlerter(float farenheit, int expectedFailCount) {
+    int (*Fcn_Ptr_networkAlert)(float);
+    Fcn_Ptr_networkAlert = &networkAlertStub;
+    alertInCelcius(farenheit,Fcn_Ptr_networkAlert);
+    assert(alertFailureCount == expectedFailCount);
+}
+
 int main() {
-    alertInCelcius(400.5);
-    alertInCelcius(303.6);
-    alertInCelcius(392);
+    testTempAlerter(303.6,0);
+    testTempAlerter(400.5,1);
+    testTempAlerter(500.4,2);
     printf("%d alerts failed.\n", alertFailureCount);
     printf("All is well (maybe!)\n");
     return 0;
