@@ -9,7 +9,7 @@ int networkAlertStub(float celcius) {
     // Return 200 for ok
     // Return 500 for not-ok
     // stub always succeeds and returns 200
-   if(alert_threshold<=celcius){
+   if(alert_threshold<celcius){
     return 200;}
     else
     { return 500;}
@@ -30,7 +30,7 @@ void alertInCelcius(float farenheit) {
 int main() {
     alertInCelcius(400.5);
     alertInCelcius(303.6);
-    alertInCelcius(500);
+    alertInCelcius(482);
     alertInCelcius(600);
     printf("%d alerts failed.\n", alertFailureCount);
     printf("All is well (maybe!)\n");
