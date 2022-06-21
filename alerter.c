@@ -30,7 +30,7 @@ void alertInCelcius(float farenheit) {
 int main() {
     alertInCelcius(400.5);
     alertInCelcius(303.6);
-    alertInCelcius(392);
+    alertInCelcius(500);
     printf("%d alerts failed.\n", alertFailureCount);
     printf("All is well (maybe!)\n");
     return 0;
