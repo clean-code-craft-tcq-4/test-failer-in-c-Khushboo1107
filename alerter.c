@@ -2,7 +2,7 @@
 #include <assert.h>
 
 int alertFailureCount = 0;
-#define Alert_threshold 200;
+int Alert_threshold = 200;
 
 int networkAlertStub(float celcius) {
     printf("ALERT: Temperature is %.1f celcius.\n", celcius);
