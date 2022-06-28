@@ -5,7 +5,7 @@ struct colorMap
 	int pairNumber;
 	char *majorColor;
 	char *minorColor;
-}
+};
 
 const int numberofValues = 25;
 struct colorMap colorMapCollection[25];
@@ -42,7 +42,7 @@ void TestFunction()
 	}
 }
 
-intMain()
+int main()
 {
 	getColorMap();
 	printColorMap();
