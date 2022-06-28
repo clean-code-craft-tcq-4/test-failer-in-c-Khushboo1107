@@ -9,6 +9,8 @@ struct colorMap
 
 const int numberofValues = 25;
 struct colorMap colorMapCollection[25];
+  const char* MajorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
+  const char* MinorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
 
 void getColorMap()
 {
@@ -17,8 +19,8 @@ void getColorMap()
 		for(int j=0; j<5; j++)
 		{
 			colorMapCollection[i*5+j].pairNumber =i*5+j;
-			colorMapCollection[i*5+j].majorColor =(char *)majorColor[i];
-			colorMapCollection[i*5+j].minorColor =(char *)minorColor[j];
+			colorMapCollection[i*5+j].majorColor =(char *)MajorColor[i];
+			colorMapCollection[i*5+j].minorColor =(char *)MinorColor[j];
 		}
 	}
 }
@@ -35,8 +37,8 @@ void TestFunction()
 	for(int i=0; i<26; i++)
 	{
 		assert(colorMapCollection[i].pairNumber == i+1);
-		assert(colorMapCollection[i].majorColor == majorColor[i]);
-		assert(colorMapCollection[i].minorColor == minorColor[i]);
+		assert(colorMapCollection[i].majorColor == MajorColor[i]);
+		assert(colorMapCollection[i].minorColor == MinorColor[i]);
 	}
 }
 
