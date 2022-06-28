@@ -20,9 +20,7 @@ int printColorMap() {
     return i * j;
 }
 
-int main() {
-    assert(getColorNumber(0,0)==1;
-    
+int main() {    
     int result = printColorMap();
     assert(result == 25);
     printf("All is well (maybe!)\n");
