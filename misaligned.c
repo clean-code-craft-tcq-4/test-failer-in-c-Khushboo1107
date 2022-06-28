@@ -12,7 +12,7 @@ struct colorMap colorMapCollection[25];
 
 void getColorMap()
 {
-	for(int i=0; i<5; i++0)
+	for(int i=0; i<5; i++)
 	{
 		for(int j=0; j<5; j++)
 		{
@@ -27,16 +27,16 @@ void printColorMap()
 {
 	for(int i=0; i <numberofValues; i++)
 	{
-		printf("%d | %s | %s\n", colorMapCollection[i].pairNumber, colorMapCollection[i].majorColor, colorMapCollection[i].minorColor)
+		printf("%d | %s | %s\n", colorMapCollection[i].pairNumber, colorMapCollection[i].majorColor, colorMapCollection[i].minorColor);
 	}
 }
 void TestFunction()
 {
 	for(int i=0; i<26; i++)
 	{
-		assert(colorMapCollection[i].pairNumber == i+1;
-		colorMapCollection[i].majorColor == majorColor[i]
-		colorMapCollection[i].minorColor == minorColor[j];
+		assert(colorMapCollection[i].pairNumber == i+1);
+		assert(colorMapCollection[i].majorColor == majorColor[i]);
+		assert(colorMapCollection[i].minorColor == minorColor[j]);
 	}
 }
 
