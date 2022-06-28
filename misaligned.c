@@ -17,8 +17,8 @@ void getColorMap()
 		for(int j=0; j<5; j++)
 		{
 			colorMapCollection[i*5+j].pairNumber =i*5+j;
-			colorMapCollection[i*5+j].majorColor=(char *)majorColor[i];
-			colorMapCollection[i*5+j].minorColor=(char *)minorColor[j];
+			colorMapCollection[i*5+j].majorColor =(char *)majorColor[i];
+			colorMapCollection[i*5+j].minorColor =(char *)minorColor[j];
 		}
 	}
 }
@@ -36,7 +36,7 @@ void TestFunction()
 	{
 		assert(colorMapCollection[i].pairNumber == i+1);
 		assert(colorMapCollection[i].majorColor == majorColor[i]);
-		assert(colorMapCollection[i].minorColor == minorColor[j]);
+		assert(colorMapCollection[i].minorColor == minorColor[i]);
 	}
 }
 
