@@ -1,28 +1,50 @@
 #include <stdio.h>
 #include <assert.h>
-int getColorNumber(int i, int j){
-return i*5+j;
+struct colorMap
+{
+	int pairNumber;
+	char *majorColor;
+	char *minorColor;
 }
 
-char* formatRow(int colorNumber, const char* majorColorName, const char* minorColorName){
-    static char rowBuffer[80];
-    sprintf(rowBuffer, "%d | %s | %s\n", colorNumber, majorColorName, minorColorName);
-}
-int printColorMap() {
-    const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
-    const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
-    int i = 0, j = 0;
-    for(i = 0; i < 5; i++) {
-        for(j = 0; j < 5; j++) {
-            printf(formatRow(getColorNumber(i,j), majorColor[i], minorColor[i]));
-        }
-    }
-    return i * j;
+const int numberofValues = 25;
+struct colorMap colorMapCollection[25];
+
+void getColorMap()
+{
+	for(int i=0; i<5; i++0)
+	{
+		for(int j=0; j<5; j++)
+		{
+			colorMapCollection[i*5+j].pairNumber =i*5+j;
+			colorMapCollection[i*5+j].majorColor=(char *)majorColor[i];
+			colorMapCollection[i*5+j].minorColor=(char *)minorColor[j];
+		}
+	}
 }
 
-int main() {    
-    int result = printColorMap();
-    assert(result == 25);
-    printf("All is well (maybe!)\n");
+void printColorMap()
+{
+	for(int i=0; i <numberofValues; i++)
+	{
+		printf("%d | %s | %s\n", colorMapCollection[i].pairNumber, colorMapCollection[i].majorColor, colorMapCollection[i].minorColor)
+	}
+}
+void TestFunction()
+{
+	for(int i=0; i<26; i++)
+	{
+		assert(colorMapCollection[i].pairNumber == i+1;
+		colorMapCollection[i].majorColor == majorColor[i]
+		colorMapCollection[i].minorColor == minorColor[j];
+	}
+}
+
+intMain()
+{
+	getColorMap();
+	printColorMap();
+	TestFunction();
+	printf("All is well (maybe!)\n");
     return 0;
 }
